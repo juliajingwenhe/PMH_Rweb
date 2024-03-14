@@ -139,12 +139,98 @@ document.querySelectorAll('.fas.fa-heart').forEach(icon => {
     });
 });
 
-function toggleSidebar() {
-    const sidebar = document.querySelector('.sidebar');
-    sidebar.classList.toggle('open');
+
+
+// Event listener for heart icons in plant boxes
+document.querySelectorAll('.fas.fa-heart').forEach(icon => {
+    icon.addEventListener('click', function(event) {
+        event.preventDefault();
+        let plantName = this.dataset.plant;
+        let savedPlants = JSON.parse(localStorage.getItem('savedPlants')) || [];
+
+        if (savedPlants.includes(plantName)) {
+            // Remove plant from saved
+            savedPlants = savedPlants.filter(p => p !== plantName);
+            this.classList.remove('saved');
+        } else {
+            // Add plant to saved
+            savedPlants.push(plantName);
+            this.classList.add('saved');
+        }
+
+        localStorage.setItem('savedPlants', JSON.stringify(savedPlants));
+        updateSavedPlantsList();
+    });
+});
+
+
+//Removed button//
+
+function loadSavedPlants() {
+    let savedPlants = JSON.parse(localStorage.getItem('savedPlants')) || [];
+    let savedPlantsList = document.getElementById('saved-plants-list');
+
+    savedPlantsList.innerHTML = ''; // Clear the list
+
+    savedPlants.forEach(plantName => {
+        let li = document.createElement('li');
+        li.textContent = plantName;
+
+        // Create a remove button for each plant
+        let removeBtn = document.createElement('button');
+        removeBtn.textContent = '🗑️';
+        removeBtn.onclick = function() {
+            // Remove plant from local storage and update the list
+            removePlant(plantName);
+        };
+
+        li.appendChild(removeBtn);
+        savedPlantsList.appendChild(li);
+    });
 }
 
 
+function removePlant(plantName) {
+    // Get the current list of saved plants
+    let savedPlants = JSON.parse(localStorage.getItem('savedPlants')) || [];
+    
+    // Filter out the plant to be removed
+    savedPlants = savedPlants.filter(p => p !== plantName);
+    
+    // Save the updated list back to local storage
+    localStorage.setItem('savedPlants', JSON.stringify(savedPlants));
+    
+    // Update the display list
+    loadSavedPlants();
+}
+
+
+document.getElementById('clear-all').addEventListener('click', function() {
+    // Clear the local storage
+    localStorage.removeItem('savedPlants');
+    
+    // Update the list
+    loadSavedPlants();
+});
+
+
+
+
+
+
+// Populate sidebar with saved plants on page load
+document.addEventListener('DOMContentLoaded', loadSavedPlants);
+
+
+// Update the heart icons for saved plants
+document.querySelectorAll('.fas.fa-heart').forEach(icon => {
+    let plantName = icon.dataset.plant;
+    let savedPlants = JSON.parse(localStorage.getItem('savedPlants')) || [];
+
+    if (savedPlants.includes(plantName)) {
+        icon.classList.add('saved');
+    }
+});
 
 
 
