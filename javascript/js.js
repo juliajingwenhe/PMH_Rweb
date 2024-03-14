@@ -139,8 +139,11 @@ document.querySelectorAll('.fas.fa-heart').forEach(icon => {
     });
 });
 
-// Toggle the sidebar when the saved plants icon in the header is clicked
-document.querySelector('.header .fas.fa-heart').addEventListener('click', toggleSidebar);
+function toggleSidebar() {
+    const sidebar = document.querySelector('.sidebar');
+    sidebar.classList.toggle('open');
+}
+
 
 
 
