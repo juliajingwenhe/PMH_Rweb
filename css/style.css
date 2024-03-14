@@ -434,11 +434,12 @@ header .search-bar-container label:hover{
     position:fixed;
     top: 0;
     right: -300px; /* Start off the screen */
-    width: 150px;
+    width: 180px;
     height: 100%;
     background: #f9f9f9ba;
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.25);
     transition: right 0.7s;
+    overflow-y: auto;
     
 }
 
@@ -469,6 +470,21 @@ header .search-bar-container label:hover{
     padding: 0;
 }
 
+#clear-all {
+    padding: 10px 20px; 
+    background-color: #51715c; 
+    color: #fff; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out; 
+}
+
+#clear-all:hover {
+    background-color: #d32f2f;
+}
+
+
 
 
 
@@ -497,8 +513,15 @@ header .search-bar-container label:hover{
     padding:1rem 0;
 }
 
+.footer .box-container .box p{
+    display: block;
+    color:#666;
+    font-size: 1.5rem;
+    padding:1rem 0;
+}
+
 .footer .box-container .box a:hover{
-    color: rgb(255, 255, 255);
+    color: rgb(81, 121, 92);
     text-decoration: underline;
 }
 
