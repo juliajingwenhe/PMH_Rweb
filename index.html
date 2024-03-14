@@ -28,8 +28,9 @@
 
         <div class="icons">
             <button id="close-sidebar"></button>
-            <a href="#" class="fas fa-heart" id="favourite"></a>
+            <a href="#saved" class="fas fa-heart" id="favourite"></a>
                 <div id="saved-plants-sidebar" class="sidebar">
+                    <button id="clear-all">Clear All</button>
                     <ul id="saved-plants-list"></ul>
                 </div>
             <!-- <a href="#" class="fas fa-heart" id="favourite"></a> -->
@@ -793,28 +794,27 @@
 
     <div class="box-container">
 
-        <!-- <div class="box">
-            <h3>About Us</h3>
-            <p>PlantMatch Haven offering of helping users pick the
-                right houseplant and providing care instructions</p>
-        </div> -->
 
         <div class="box">
             <h3>Quick Links</h3>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Guides</a>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#guides">Guides</a>
             
         </div>
 
         <div class="box">
             <h3>Extra Links</h3>
-            <a href="#">My Favorite</a>
+            <button id="close-sidebar"></button>
+            <a href="#saved" class="fas fa-heart" id="favourite"></a>
+                <div id="saved-plants-sidebar" class="sidebar">
+                    <ul id="saved-plants-list"></ul>
+                </div>
         </div>
 
         <div class="box">
             <h3>Contact Info</h3>
-            <a href="#">hello@plantmatchhaven.com</a> 
+            <p>hello@plantmatchhaven.com</p> 
         </div>
 
     </div>
@@ -822,9 +822,12 @@
     <div class="credit">Created by <span>Julia He</span> | All rights reserved</h1>
 
  </section>
-    
+
+
+
 
     
     <script src="javascript/js.js"></script>
+    
 </body>
 </html>
